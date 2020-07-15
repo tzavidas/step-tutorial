@@ -1,9 +1,56 @@
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
+body
+{
+    margin: 0;
+    padding: 0;
 }
 
-#greeting-container {
-  margin-top: 20px;
+.menu
+{
+    display: none;
 }
+
+.main
+{
+    width: 100vw;
+}
+
+nav
+{
+    height: 40px;
+    width: 100%;
+    background-color: #1a73e8; /*TODO change with another color, copied from GCP!*/
+    padding: 10px;
+}
+
+.toggler
+{
+    font-size: 35px;
+    cursor: pointer;
+    color: white;
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+nav > h2
+{
+    display: inline;
+    position: relative;
+    top: -4px;
+    color: #FFF;
+    margin-left: 20px;
+}
+
+.project-container
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    padding: 10px 10px 0;
+}
+
+.card
+{
+    height: 200px;
+} 
