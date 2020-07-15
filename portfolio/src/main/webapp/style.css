@@ -6,7 +6,54 @@ body
 
 .menu
 {
-    display: none;
+    position: fixed;
+    top: 60px;
+    z-index: 1;
+    width: 200px;
+    height: calc(100% - 60px);
+    background-color: #FFF;
+}
+
+.labels-section
+{
+}
+
+.labels-section > p
+{
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.labels-list
+{
+    list-style-type: none;
+    margin-top: 5px;
+    padding: 0;
+}
+
+.labels-list > li
+{
+    display: flex;
+    flex-direction: row;
+    padding: 5px 10px;
+}
+
+.labels-list > li:hover,
+.labels-list > li:hover .label-semi-circle-part
+{
+    background-color: #D8D8D8;
+}
+
+.labels-list > li:hover .label-name
+{
+    color: #FFF;
+}
+
+.labels-list > li > p
+{
+    font-size: 20px;
+    margin: 0;
+    margin-left: 20px;
 }
 
 .main
