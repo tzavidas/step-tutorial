@@ -52,5 +52,95 @@ nav > h2
 
 .card
 {
-    height: 200px;
-} 
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    border: 1px solid #909090;
+    border-radius: 3px;
+    box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.2)
+}
+
+.card-content
+{
+    box-sizing: border-box;
+    height: calc(100% - 40px);
+    border-bottom: 1px solid #909090;
+}
+
+.card-title
+{
+    color: #1a73e8;
+    text-align: center;
+    padding: 5px 0 10px;
+    margin: 0;
+    border-bottom: 1px solid #909090;
+}
+
+.card-details
+{
+    padding: 5px 10px 10px;
+    margin: 0;
+}
+
+.card-content > img
+{
+    width: 100%;
+    height: 100%;
+}
+
+.label
+{
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+}
+
+.label-semi-circle-part
+{
+    position: absolute;
+    width: 15px;
+    height: 20px;
+    background-color: white;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.label-main-part
+{
+    background: green;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.button-container
+{
+    flex-grow: 1;
+    text-align: center;
+}
+
+.button-container > button
+{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #3367d6;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Arial;
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.button-container > button:hover
+{
+    background-color: #C8C8C8;
+    padding: 5px 12px;
+    border-radius: 3px;
+    transition: 0.1s;
+}
