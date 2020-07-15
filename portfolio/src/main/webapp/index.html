@@ -33,17 +33,21 @@
                 </ul>
             </div>
             <div class="sorting-section">
-                <h4>Sorting options</h4>
-                <label for="sort-attribute">Sort-by</label>
-                <select name="sort-attribute">
-                    <option value="empty" disabled selected></option>
-                    <option value="name">Name</option>
-                    <option value="date">Date</option>
-                </select>
-                <input type="radio" name="sort-type" value="asc" />
-                <label for="asc">Ascending</label>
-                <input type="radio" name="sort-type" value="desc" />
-                <label for="desc">Descending</label>
+                <p>Sorting options</p>
+                <div class="sort-by-section">
+                    <label for="sort-attribute">Sort by</label>
+                    <select name="sort-attribute" class="sort-by-select">
+                        <option value="empty" disabled selected></option>
+                        <option value="name">Name</option>
+                        <option value="date">Date</option>
+                    </select>
+                </div>
+                <div class="sort-type-section">
+                    <input type="radio" name="sort-type" value="asc" />
+                    <label for="asc">Asc</label>
+                    <input type="radio" name="sort-type" value="desc" />
+                    <label for="desc">Desc</label>
+                </div>
             </div>
         </div>
         <div class="main">
