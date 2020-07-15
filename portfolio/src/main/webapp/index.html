@@ -1,18 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <title>My Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div class="menu">
+            <h2>My Portfolio</h2>
+            <div class="labels-section">
+                <p>Filter by language:</p>
+                <ul id="labels-list">
+                    <li>
+                        <div class="label-shape">
+                        </div>
+                        <p class="label-name">JS</p>
+                    </li>
+                    <li>
+                        <div class="label-shape">
+                        </div>
+                        <p class="label-name">C++</p>
+                    </li>
+                    <li>
+                        <div class="label-shape">
+                        </div>
+                        <p class="label-name">Java</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="sorting-section">
+                <h4>Sorting options</h4>
+                <label for="sort-attribute">Sort-by</label>
+                <select name="sort-attribute">
+                    <option value="empty" disabled selected></option>
+                    <option value="name">Name</option>
+                    <option value="date">Date</option>
+                </select>
+                <input type="radio" name="sort-type" value="asc" />
+                <label for="asc">Ascending</label>
+                <input type="radio" name="sort-type" value="desc" />
+                <label for="desc">Descending</label>
+            </div>
+        </div>
+        <div class="main">
+            <nav>
+                <button>≡</button>
+                <h2>My Portfolio</h2>
+            </nav>
+            <div id="content">
+                <div id="project-container">
+                    <div class="card">
+                        <img src="#" />
+                        <div class="button-container">
+                            <button>More Details</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="content">
+                            <h3>Calculator</h3>
+                            <p>Lorem Ipsum</p>
+                            <p>Tags</p>
+                        </div>
+                        <div class="button-container">
+                            <button>Back</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="#" />
+                        <div class="button-container">
+                            <button>More Details</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="#" />
+                        <div class="button-container">
+                            <button>More Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
