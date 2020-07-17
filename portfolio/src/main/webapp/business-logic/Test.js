@@ -125,7 +125,5 @@ const test = () => {
     const projectController = new ProjectController(projects, filterController, mainContentRenderer);
     const internalController = new InternalController(projectController, filterController);
 
-    //labelListRenderer.render(labels);
-    //mainContentRenderer.render(projects);
-    internalController.setup();
+    document.internalControllerGlobalObject = internalController;
 }

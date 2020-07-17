@@ -65,7 +65,7 @@ class FilterController {
             return true;
         }
 
-        for({ id } of labelsArray) {
+        for(const { id } of labelsArray) {
             if(this.activeFilters.has(id)) {
                 return true;
             }
