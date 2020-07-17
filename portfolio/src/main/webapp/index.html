@@ -10,6 +10,9 @@
         <script src="business-logic/RendererInterface.js"></script>
         <script src="business-logic/LabelListRenderer.js"></script>
         <script src="business-logic/MainContentRenderer.js"></script>
+        <script src="business-logic/InternalController.js"></script>
+        <script src="business-logic/ProjectController.js"></script>
+        <script src="business-logic/FilterController.js"></script>
         <script src="business-logic/Test.js"></script>
         <!-- End of Business Logic -->
 
@@ -21,29 +24,7 @@
         <div class="menu">
             <div class="labels-section">
                 <p>Filter by language</p>
-                <ul class="labels-list">
-                    <li>
-                        <div class="label">
-                            <div class="label-semi-circle-part"></div>
-                            <div class="label-main-part" style="background-color: green"></div>
-                        </div>
-                        <p class="label-name">JS</p>
-                    </li>
-                    <li>
-                        <div class="label">
-                            <div class="label-semi-circle-part"></div>
-                            <div class="label-main-part" style="background-color: red"></div>
-                        </div>
-                        <p class="label-name">C++</p>
-                    </li>
-                    <li>
-                        <div class="label">
-                            <div class="label-semi-circle-part"></div>
-                            <div class="label-main-part" style="background-color: blue"></div>
-                        </div>
-                        <p class="label-name">Java</p>
-                    </li>
-                </ul>
+                <ul class="labels-list"></ul>
             </div>
             <div class="sorting-section">
                 <p>Sorting options</p>
@@ -69,136 +50,7 @@
                 <h2>My Portfolio</h2>
             </nav>
             <div class="content">
-                <div class="project-container">
-                    <div class="card">
-                        <div class="card-front">
-                            <div class="card-content">
-                                <img src="/images/cat1.jpg" />
-                            </div>
-                            <div class="button-container">
-                                <button onclick="flipCard(this)">More Details</button>
-                            </div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-content">
-                                <h3 class="card-title">Calculator</h3>
-                                <p class="card-details">Lorem Ipsum</p>
-                                <div class="card-labels-section">
-                                    <p>Tags:</p>
-                                    <div class="labels-row">
-                                        <div class="label">
-                                            <div class="label-semi-circle-part"></div>
-                                            <div class="label-main-part" style="background-color: green"></div>
-                                        </div>
-                                        <div class="label">
-                                            <div class="label-semi-circle-part"></div>
-                                            <div class="label-main-part" style="background-color: red"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="button-container">
-                                <button onclick="flipCard(this)">Back</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-front">
-                            <div class="card-content">
-                                <img src="/images/cat2.jpg" />
-                            </div>
-                            <div class="button-container">
-                                <button onclick="flipCard(this)">More Details</button>
-                            </div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-content">
-                                <h3 class="card-title">Calculator</h3>
-                                <p class="card-details">Lorem Ipsum</p>
-                                <div class="card-labels-section">
-                                    <p>Tags:</p>
-                                    <div class="labels-row">
-                                        <div class="label">
-                                            <div class="label-semi-circle-part"></div>
-                                            <div class="label-main-part" style="background-color: green"></div>
-                                        </div>
-                                        <div class="label">
-                                            <div class="label-semi-circle-part"></div>
-                                            <div class="label-main-part" style="background-color: red"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="button-container">
-                                <button onclick="flipCard(this)">Back</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-front">
-                            <div class="card-content">
-                                <img src="/images/cat1.jpg" />
-                            </div>
-                            <div class="button-container">
-                                <button onclick="flipCard(this)">More Details</button>
-                            </div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-content">
-                                <h3 class="card-title">Calculator</h3>
-                                <p class="card-details">Lorem Ipsum</p>
-                                <div class="card-labels-section">
-                                    <p>Tags:</p>
-                                    <div class="labels-row">
-                                        <div class="label">
-                                            <div class="label-semi-circle-part"></div>
-                                            <div class="label-main-part" style="background-color: green"></div>
-                                        </div>
-                                        <div class="label">
-                                            <div class="label-semi-circle-part"></div>
-                                            <div class="label-main-part" style="background-color: red"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="button-container">
-                                <button onclick="flipCard(this)">Back</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-front">
-                            <div class="card-content">
-                                <img src="/images/cat2.jpg" />
-                            </div>
-                            <div class="button-container">
-                                <button onclick="flipCard(this)">More Details</button>
-                            </div>
-                        </div>
-                        <div class="card-back">
-                            <div class="card-content">
-                                <h3 class="card-title">Calculator</h3>
-                                <p class="card-details">Lorem Ipsum</p>
-                                <div class="card-labels-section">
-                                    <p>Tags:</p>
-                                    <div class="labels-row">
-                                        <div class="label">
-                                            <div class="label-semi-circle-part"></div>
-                                            <div class="label-main-part" style="background-color: green"></div>
-                                        </div>
-                                        <div class="label">
-                                            <div class="label-semi-circle-part"></div>
-                                            <div class="label-main-part" style="background-color: red"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="button-container">
-                                <button onclick="flipCard(this)">Back</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="project-container"></div>
             </div>
         </div>
         <script src="animations.js"></script>

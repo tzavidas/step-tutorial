@@ -39,7 +39,9 @@ class MainContentRenderer extends RendererInterface {
                                 <div class="card-labels-section">
                                     <p>Tags:</p>
                                     <div class="labels-row">
-                                        ${ project.labels.fill().map((label) => this.createLabel(label)) }
+                                        ${ project.labels
+                                        .map((label) => this.createLabel(label))
+                                        .reduce((acc, curr) => (acc + curr), "") }
                                     </div>
                                 </div>
                             </div>

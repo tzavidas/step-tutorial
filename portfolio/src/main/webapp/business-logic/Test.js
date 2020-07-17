@@ -15,31 +15,83 @@ const test = () => {
         title: "My second",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat2.jpg",
-        labels: [],
+        labels: [{
+            id: 1,
+            name: "C++",
+            color: "red"
+        }, {
+            id: 2,
+            name: "Java",
+            color: "green"
+        }, {
+            id: 3,
+            name: "Python",
+            color: "black"
+        }, {
+            id: 4,
+            name: "JavaScript",
+            color: "blue"
+        }],
         active: true
     }, {
         title: "My 3rd",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat2.jpg",
-        labels: [],
+        labels: [{
+            id: 1,
+            name: "C++",
+            color: "red"
+        }, {
+            id: 4,
+            name: "JavaScript",
+            color: "blue"
+        }],
         active: true
     }, {
         title: "My 4th",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat1.jpg",
-        labels: [],
+        labels: [{
+            id: 2,
+            name: "Java",
+            color: "green"
+        }, {
+            id: 3,
+            name: "Python",
+            color: "black"
+        }, {
+            id: 4,
+            name: "JavaScript",
+            color: "blue"
+        }],
         active: true
     }, {
         title: "My 5th",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat2.jpg",
-        labels: [],
+        labels: [{
+            id: 3,
+            name: "Python",
+            color: "black"
+        }],
         active: true
     }, {
         title: "My 6th",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat1.jpg",
-        labels: [],
+        labels: [{
+            id: 1,
+            name: "C++",
+            color: "red"
+        }, {
+            id: 3,
+            name: "Python",
+            color: "black"
+        }, {
+            id: 4,
+            name: "JavaScript",
+            color: "blue"
+        }],
         active: true
     }, {
         title: "My 7th",
@@ -50,19 +102,28 @@ const test = () => {
     }];
 
     const labels = [{
+        id: 1,
         name: "C++",
         color: "red"
     }, {
+        id: 2,
         name: "Java",
         color: "green"
     }, {
+        id: 3,
         name: "Python",
         color: "black"
     }, {
+        id: 4,
         name: "JavaScript",
         color: "blue"
     }];
 
-    labelListRenderer.render(labels);
-    mainContentRenderer.render(projects);
+    const filterController = new FilterController(labels, labelListRenderer);
+    const projectController = new ProjectController(projects, filterController, mainContentRenderer);
+    const internalController = new InternalController(projectController, filterController);
+
+    //labelListRenderer.render(labels);
+    //mainContentRenderer.render(projects);
+    internalController.setup();
 }
