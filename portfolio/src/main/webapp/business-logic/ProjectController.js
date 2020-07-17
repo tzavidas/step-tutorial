@@ -1,4 +1,9 @@
 class ProjectController {
+    /*
+    * @projects: a list of all projects
+    * @filterController: an object of class FilterController
+    * @mainContentRenderer: an object of class MainContentRenderer
+    */
     constructor(projects, filterController, mainContentRenderer) {
         this.projects = projects;
         this.mainContentRenderer = mainContentRenderer;
@@ -6,15 +11,24 @@ class ProjectController {
         this.filterController = filterController;
     }
     
+    /*
+    * initial setup (to render the initial state)
+    */
     setup() {
         this.notifyRenderer();
     }
 
+    /*
+    * notifies the mainContentRenderer that we have an update
+    */
     notifyRenderer() {
         this.mainContentRenderer.render(this.projects);
     }
 
-    updateActiveProjects(filter) {
+    /*
+    * updates the attribute "active" of all the projects
+    */
+    updateActiveStatusOfProjects() {
         for(project of projects) {
             currLabel.active = this.filterController.shouldIncude(project.labels);
         }
@@ -22,6 +36,11 @@ class ProjectController {
         this.notifyRenderer();
     }
 
+    /*
+    * applies sorting to the project list
+    * @by: the attribute we need to sort by
+    * @type: asecnding or descending sort
+    */
     applySorting(by, type) {
         if(!["asc", "desc"].includes(type)) {
             throw IllegalTypeParameter;
@@ -31,6 +50,8 @@ class ProjectController {
             throw IllegalByParameter;
         }
 
+        // For more details on how this work, check
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
         this.projects.sort((left, right) => {
             let evaluation = right[by] - left[by];
 

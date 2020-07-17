@@ -1,6 +1,8 @@
+
+// Renders the HTML on the render list on the menu
 class LabelListRenderer extends RendererInterface {
     /*
-    * @param targetElement -> DOM element
+    * @param targetElement: the appropriate DOM element
     */
     constructor(targetElement) {
         super();
@@ -8,6 +10,9 @@ class LabelListRenderer extends RendererInterface {
         this.target = targetElement;
     }
 
+    /*
+    * @param labels: array for the labels to be rendered
+    */
     render(labels) {
         this.target.innerHTML = "";
 

@@ -1,6 +1,7 @@
+// Renders the HTML card on the main content
 class MainContentRenderer extends RendererInterface {
     /*
-    * @param targetElement -> DOM element
+    * @param targetElement -> the appropriate DOM element
     */
     constructor(targetElement) {
         super();
@@ -8,6 +9,10 @@ class MainContentRenderer extends RendererInterface {
         this.target = targetElement;
     }
 
+    /*
+    * Helper function that creates the HMTL for a given label.
+    * @label the label object that will be used
+    */
     createLabel(label) {
         return `
             <div class="label">
@@ -17,6 +22,9 @@ class MainContentRenderer extends RendererInterface {
         `;
     }
 
+    /*
+    * @param project: array for the projects to be rendered
+    */
     render(projects) {
         this.target.innerHTML = "";
 

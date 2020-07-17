@@ -1,3 +1,5 @@
+// function to test the functionality of our business logic
+// it will be reused partially on deployment
 const test = () => {
     const labelsListElement = document.getElementsByClassName("labels-list")[0];
     const projectContainerElement = document.getElementsByClassName("project-container")[0];

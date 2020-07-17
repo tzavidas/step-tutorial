@@ -1,6 +1,7 @@
 class FilterController {
     /*
-    * @filters: A list of all filters
+    * @filters: a list of all filters
+    * @labelListRenderer: an object of class LabelListRenderer
     * 
     * this.activeFilters -> a Set that contains all active filters
     */
@@ -11,11 +12,15 @@ class FilterController {
         this.activeFilters = new Set();
     }
 
+    /*
+    * initial setup (to render the initial state)
+    */
     setup() {
         this.prepareRender();
     }
 
     /*
+    * handles the logic of toggling a filter label.
     * @id: the id of the filter we need to toggle
     */
     toggleFilterById(id) {
@@ -28,6 +33,9 @@ class FilterController {
         this.prepareRender();
     }
 
+    /*
+    * creates a more format-frendly array for the label list renderer and it calls it.
+    */
     prepareRender() {
         let convertedList = [];
 
@@ -41,6 +49,9 @@ class FilterController {
         this.notifyRenderer(convertedList);
     }
 
+    /*
+    * notifies the labelListRenderer that we have an update
+    */
     notifyRenderer(convertedList) {
         this.labelListRenderer.render(convertedList);
     }
