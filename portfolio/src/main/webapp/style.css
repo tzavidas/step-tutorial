@@ -4,15 +4,34 @@ body
     padding: 0;
 }
 
+.content-conceal-layer-active
+{
+    position: fixed;
+    top: 60px;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    cursor: pointer;
+}
+
 .menu
 {
     position: fixed;
     top: 60px;
+    left: -200px;
     z-index: 1;
     width: 200px;
     height: calc(100% - 60px);
     background-color: #FFF;
     border-right: 1px solid #909090;
+    transition: 0.3s;
+}
+
+.menu-open
+{
+    left: 0;
+    transition: 0.3s;
 }
 
 .labels-section
