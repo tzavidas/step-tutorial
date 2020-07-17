@@ -11,12 +11,16 @@ const test = () => {
         title: "My first",
         description: "My desc",
         imageUrl: "/images/cat1.jpg",
+        url: "#",
+        date: "2020-01-01",
         labels: [],
         active: true
     }, {
         title: "My second",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat2.jpg",
+        url: "#",
+        date: "2020-01-01",
         labels: [{
             id: 1,
             name: "C++",
@@ -39,6 +43,8 @@ const test = () => {
         title: "My 3rd",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat2.jpg",
+        url: "#",
+        date: "2020-01-01",
         labels: [{
             id: 1,
             name: "C++",
@@ -53,6 +59,8 @@ const test = () => {
         title: "My 4th",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat1.jpg",
+        url: "#",
+        date: "2020-01-01",
         labels: [{
             id: 2,
             name: "Java",
@@ -71,6 +79,8 @@ const test = () => {
         title: "My 5th",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat2.jpg",
+        url: "#",
+        date: "2020-01-01",
         labels: [{
             id: 3,
             name: "Python",
@@ -81,6 +91,8 @@ const test = () => {
         title: "My 6th",
         description: "Lorem Ipsum",
         imageUrl: "/images/cat1.jpg",
+        url: "#",
+        date: "2020-01-01",
         labels: [{
             id: 1,
             name: "C++",
@@ -99,6 +111,8 @@ const test = () => {
         title: "My 7th",
         description: "Lorem Ipsum LASTTTT",
         imageUrl: "/images/cat2.jpg",
+        url: "#",
+        date: "2020-01-01",
         labels: [],
         active: true
     }];

@@ -259,7 +259,15 @@ nav > h2
     border-bottom: 1px solid #909090;
 }
 
-.card-content > img
+.card-content > a
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.card-content > a > img
 {
     width: 100%;
     height: 100%;
