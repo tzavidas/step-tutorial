@@ -23,7 +23,7 @@ class InternalController {
     toggleFilter(filterId) {
         this.filterController.toggleFilterById(filterId);
 
-        this.projectController.updateActiveStatusOfProjects(this.filterController.getAllFilters());
+        this.projectController.updateActiveStatusOfProjects();
     }
 
     /*

@@ -29,8 +29,8 @@ class ProjectController {
     * updates the attribute "active" of all the projects
     */
     updateActiveStatusOfProjects() {
-        for(project of projects) {
-            currLabel.active = this.filterController.shouldIncude(project.labels);
+        for(const project of this.projects) {
+            project.active = this.filterController.shouldInclude(project.labels);
         }
 
         this.notifyRenderer();
@@ -53,10 +53,10 @@ class ProjectController {
         // For more details on how this work, check
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
         this.projects.sort((left, right) => {
-            let evaluation = right[by] - left[by];
+            let evaluation = (left[by] < right[by] ? -1 : 1);
 
-            if(by == "desc") { // reverse the order
-                evaluation = -eval;
+            if(type == "desc") { // reverse the order
+                evaluation = -evaluation;
             }
 
             return evaluation;

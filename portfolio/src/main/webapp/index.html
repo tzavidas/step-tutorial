@@ -15,7 +15,7 @@
         <script src="business-logic/FilterController.js"></script>
         <script src="business-logic/Test.js"></script>
         <!-- End of Business Logic -->
-
+        <script src="business-logic-entry-point.js"></script>
         <script src="script.js"></script>
     </head>
     <body>
@@ -30,16 +30,16 @@
                 <p>Sorting options</p>
                 <div class="sort-by-section">
                     <label for="sort-attribute">Sort by</label>
-                    <select name="sort-attribute" class="sort-by-select">
+                    <select name="sort-attribute" class="sort-by-select" onchange="handleSelectChange()">
                         <option value="empty" disabled selected></option>
-                        <option value="name">Name</option>
+                        <option value="title">Title</option>
                         <option value="date">Date</option>
                     </select>
                 </div>
                 <div class="sort-type-section">
-                    <input type="radio" name="sort-type" value="asc" />
+                    <input type="radio" name="sort-type" value="asc" onclick="handleSelectChange()" />
                     <label for="asc">Asc</label>
-                    <input type="radio" name="sort-type" value="desc" />
+                    <input type="radio" name="sort-type" value="desc" onclick="handleSelectChange()" />
                     <label for="desc">Desc</label>
                 </div>
             </div>

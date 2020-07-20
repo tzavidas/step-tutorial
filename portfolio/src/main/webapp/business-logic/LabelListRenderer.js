@@ -18,8 +18,9 @@ class LabelListRenderer extends RendererInterface {
 
         for(const label of labels) {
             let labelHtml = `
-                <li>
-                    <div class="label ${ label.active ? "label-active" : "" }">
+                <li onclick="handleLabelClick(${label.id})" 
+                ${ label.active ? "class=\"label-active\"" : "" }>
+                    <div class="label">
                         <div class="label-semi-circle-part"></div>
                         <div class="label-main-part" style="background-color: ${label.color}"></div>
                     </div>
