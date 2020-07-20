@@ -17,6 +17,7 @@
         <!-- End of Business Logic -->
 
         <script src="script.js"></script>
+        <script src="message-fetch.js"></script>
     </head>
     <body>
         <div class="content-conceal-layer" onclick="handleConcealLayerClick()">
@@ -51,8 +52,8 @@
             </nav>
             <div class="content">
                 <div class="project-container"></div>
-                <div class="message-container" onclick="fetchMessage()">
-                    <button>Request a greeting</button>
+                <div class="message-container">
+                    <button onclick="fetchMessage(fetchMock())">Request a greeting</button>
                     <p id="message-text">The greeting will appear here!</p>
                 </div>
             </div>
