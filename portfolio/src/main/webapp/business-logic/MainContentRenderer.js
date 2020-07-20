@@ -34,7 +34,9 @@ class MainContentRenderer extends RendererInterface {
                     <div class="card">
                         <div class="card-front">
                             <div class="card-content">
-                                <img src=${project.imageUrl} />
+                                <a href=${project.url}>
+                                    <img src=${project.imageUrl} />
+                                </a>
                             </div>
                             <div class="button-container">
                                 <button onclick="flipCard(this)">More Details</button>
