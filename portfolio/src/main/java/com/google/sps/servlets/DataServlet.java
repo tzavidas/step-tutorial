@@ -39,8 +39,6 @@ public class DataServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
 
         response.setContentType("text/html;");
-        
-        writer.println("<h1>Hello world!</h1>");
-        writer.println("<h2>Greeting from " + renderedName + "!</h2>");
+        writer.println("Greeting from " + renderedName + "!");
     }
 }
