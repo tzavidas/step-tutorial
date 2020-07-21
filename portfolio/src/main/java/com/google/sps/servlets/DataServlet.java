@@ -27,14 +27,14 @@ import java.lang.Math;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    private final static String[] nicknames = { "Nick", "nicktz1408", "Nikolaos", "an intern Googler", "a Noogler", "a STEPer" };
+    private final static String[] Nicknames = { "Nick", "nicktz1408", "Nikolaos", "an intern Googler", "a Noogler", "a STEPer" };
 
   @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        final int namesLen = nicknames.length;
+        final int namesLen = Nicknames.length;
 
         final int randomIndex = (int)Math.floor(Math.random() * namesLen);
-        final String renderedName = nicknames[randomIndex];
+        final String renderedName = Nicknames[randomIndex];
 
         PrintWriter writer = response.getWriter();
 
