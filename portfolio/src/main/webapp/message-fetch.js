@@ -1,5 +1,5 @@
 /**
- * @param {function} a mock fetch object for testing purposes
+ * @param {function} fetchObj a mock fetch object for testing purposes
  */
 const fetchMessage = (fetchObj = null) => {
     const url = "/data";
