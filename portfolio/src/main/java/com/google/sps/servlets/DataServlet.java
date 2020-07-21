@@ -21,13 +21,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.PrintWriter;
-import java.lang.Math.*;
+import java.lang.Math;
 
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-    private static String[] nicknames = { "Nick", "nicktz1408", "Nikolaos", "an intern Googler", "a Noogler", "a STEPer" };
+    private final static String[] nicknames = { "Nick", "nicktz1408", "Nikolaos", "an intern Googler", "a Noogler", "a STEPer" };
 
   @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
