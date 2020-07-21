@@ -1,14 +1,6 @@
-//placeholder mock fetch object until this branch has access to the server
-const fetchMock = () => {
-    return (url) => {
-        return Promise.resolve({
-            text: () => {
-                return Promise.resolve("Greetings from Nick! :)");
-            }
-        });
-    };
-}
-
+/**
+ * @param {function} a mock fetch object for testing purposes
+ */
 const fetchMessage = (fetchObj = null) => {
     const url = "/data";
 
