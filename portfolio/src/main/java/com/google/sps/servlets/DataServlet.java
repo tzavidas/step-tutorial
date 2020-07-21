@@ -20,13 +20,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.io.PrintWriter;
+import java.lang.Math;
+
+
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+    private final static String[] Nicknames = { "Nick", "nicktz1408", "Nikolaos", "an intern Googler", "a Noogler", "a STEPer" };
 
   @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello world!</h1>");
-  }
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        final int namesLen = Nicknames.length;
+
+        final int randomIndex = (int)Math.floor(Math.random() * namesLen);
+        final String renderedName = Nicknames[randomIndex];
+
+        PrintWriter writer = response.getWriter();
+
+        response.setContentType("text/html;");
+        
+        writer.println("<h1>Hello world!</h1>");
+        writer.println("<h2>Greeting from " + renderedName + "!</h2>");
+    }
 }
