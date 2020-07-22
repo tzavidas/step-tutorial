@@ -17,6 +17,7 @@
         <!-- End of Business Logic -->
         <script src="business-logic-entry-point.js"></script>
         <script src="script.js"></script>
+        <script src="message-fetch.js"></script>
     </head>
     <body>
         <div class="content-conceal-layer" onclick="handleConcealLayerClick()">
@@ -51,6 +52,10 @@
             </nav>
             <div class="content">
                 <div class="project-container"></div>
+                <div class="message-container">
+                    <button onclick="fetchMessage()">Request a greeting</button>
+                    <p id="message-text">The greeting will appear here!</p>
+                </div>
             </div>
         </div>
         <script src="animations.js"></script>

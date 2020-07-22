@@ -378,3 +378,27 @@ nav > h2
     border-radius: 3px;
     transition: 0.1s;
 }
+
+.message-container
+{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.message-container > button
+{
+    color: #FFF;
+    background: #1a73e8;
+    font-size: 25px;
+    cursor: pointer;
+    padding: 5px 20px;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+    box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.2);
+}
+
+#message-text
+{
+    font-size: 20px;
+}
