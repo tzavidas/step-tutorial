@@ -10,7 +10,7 @@ class CommentFacade {
      * refreshes the comment section
      */
     async refresh() {
-        const comments = await this.commentFetcher.fetchComments();
+        const comments = await this.commentFetcher.getAllComments();
 
         this.commentRenderer.render(comments);
     }
