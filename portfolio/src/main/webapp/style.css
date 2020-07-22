@@ -379,19 +379,19 @@ nav > h2
     transition: 0.1s;
 }
 
-.comments-section
+.comment-section
 {
     width: 80%;
     margin: 40px auto 0;
 }
 
-.comments-section > h2
+.comment-section > h2
 {
     color: #1a73e8;
     text-align: center;
 }
 
-.comments-list
+.comment-list
 {
     width: 100%;
 }
