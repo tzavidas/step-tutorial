@@ -1,6 +1,6 @@
 // Sets up the classes involved with the comment section
 const commentsSetup = () => {
-    const commentsList = document.getElementsByClassName("commentlist")[0];
+    const commentsList = document.getElementsByClassName('comment-list')[0];
 
     const commentFetcher = new CommentFetcher();
     const commentRenderer = new CommentRenderer(commentsList);
