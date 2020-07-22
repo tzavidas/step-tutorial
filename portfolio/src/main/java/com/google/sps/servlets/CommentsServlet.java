@@ -11,12 +11,22 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.google.sps.data.Comment;
+import com.google.sps.data.CommentBuilder;
+
 import com.google.gson.Gson;
 
 @WebServlet("/comments")
 public final class CommentsServlet extends HttpServlet {
     private List <Comment> getCommentsList() {
         ArrayList <Comment> commentsList = new ArrayList <Comment>();
+
+        commentsList.add(new CommentBuilder()
+            .setId(1)
+            .setName("Max B")
+            .setDescription("My prev comment!")
+            .setPostDate(new Date(1595318478000L))
+            .build()
+        );
 
         commentsList.add(new Comment(1, "Max B", "Hello y'all!", new Date(1595320478000L)));
         commentsList.add(new Comment(2, "Maksim S", "Hey folks!", new Date(1595322478000L)));
