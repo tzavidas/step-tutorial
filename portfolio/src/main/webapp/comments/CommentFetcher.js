@@ -32,7 +32,7 @@ class CommentFetcher {
         const res = await fetch(url, {
             method: 'POST',
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
+                'Content-Type': 'application/x-www-form-urlencoded'
             },
             body: convertJSONToQueryString({
                 name,
@@ -42,7 +42,7 @@ class CommentFetcher {
 
         const text = await res.text();
 
-        if(text === "Success") {
+        if(text === 'success') {
             return true;
         }
 
@@ -52,11 +52,11 @@ class CommentFetcher {
 
 const convertJSONToQueryString = (obj) => {
     if(obj === {} || !obj) { //null or empty
-        return "";
+        return '';
     }
 
 
-    let queryString = "";
+    let queryString = '';
 
     for(const key in obj) {
         queryString += `${key}=${obj[key]}&`;

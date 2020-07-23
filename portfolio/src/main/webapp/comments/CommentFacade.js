@@ -19,7 +19,7 @@ class CommentFacade {
         if(isSuccessful) {
             this.refreshComments();
         } else {
-            alert("Your comment has not been posted! Please try again later!");
+            alert('Your comment has not been posted! Please try again later!');
         }
     }
 

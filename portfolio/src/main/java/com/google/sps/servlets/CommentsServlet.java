@@ -61,9 +61,6 @@ public final class CommentsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String name = request.getParameter("name");
         final String description = request.getParameter("description");
-
-        System.out.println(name);
-        System.out.println(description);
         
         final Date postDate = new Date(); // defaults to the current system's date
 
@@ -82,9 +79,9 @@ public final class CommentsServlet extends HttpServlet {
         try {
             this.commentList.addComment(newComment);
 
-            response.getWriter().println("Success!");
+            response.getWriter().write("success");
         } catch(CommentExistingId e) {
-            response.getWriter().println("Failure!");
+            response.getWriter().write("failure");
         }
     }
 

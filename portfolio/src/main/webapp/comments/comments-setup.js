@@ -13,8 +13,11 @@ const handlePostCommentFormSubmit = (e) => {
     e = e || window.event;
     e.preventDefault();
 
-    const name = document.getElementsByName("comment-name")[0].value;
-    const description = document.getElementsByName("comment-description")[0].value;
+    const name = document.getElementsByName('comment-name')[0].value;
+    const description = document.getElementsByName('comment-description')[0].value;
+
+    document.getElementsByName('comment-name')[0].value = ''; // clear
+    document.getElementsByName('comment-description')[0].value = ''; // clear
 
     document.commentFacade.postComment(name, description);
 }

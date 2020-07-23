@@ -11,7 +11,7 @@ class CommentRenderer extends RendererInterface {
      * @param comments an array with the comment details to be rendered
      */
     render(comments) {
-        this.target.innerHTML = "";
+        this.target.innerHTML = '';
 
         if(comments.length == 0) {
             const emptyCommentHtml = `
