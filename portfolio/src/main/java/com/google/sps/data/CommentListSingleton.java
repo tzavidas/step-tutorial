@@ -8,15 +8,15 @@ import java.util.HashMap;
 import com.google.sps.dataExceptions.CommentExistingId;
 import com.google.sps.dataExceptions.CommentNotFound;
 
-class CommentListSingleton {
+public class CommentListSingleton {
     private static CommentListSingleton instance;
 
-    public static getInstance {
+    public static CommentListSingleton getInstance() {
         if(instance == null) {
             instance = new CommentListSingleton();
-        } else {
-            return instance;
         }
+
+        return instance;
     }
 
     private Map <Integer, Comment> commentsContainer;
