@@ -8,10 +8,20 @@ import java.util.HashMap;
 import com.google.sps.dataExceptions.CommentExistingId;
 import com.google.sps.dataExceptions.CommentNotFound;
 
-class CommentList {
+class CommentListSingleton {
+    private static CommentListSingleton instance;
+
+    public static getInstance {
+        if(instance == null) {
+            instance = new CommentListSingleton();
+        } else {
+            return instance;
+        }
+    }
+
     private Map <Integer, Comment> commentsContainer;
 
-    public CommentList() {
+    private CommentListSingleton() {
         this.commentsContainer = new HashMap<Integer, Comment>(); // hash table-like implementation (allows insertions, deletions and search by id in O(1))
     }
 
