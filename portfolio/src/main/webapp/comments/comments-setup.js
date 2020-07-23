@@ -5,4 +5,6 @@ const commentsSetup = () => {
     const commentFetcher = new CommentFetcher();
     const commentRenderer = new CommentRenderer(commentsList);
     const commentFacade = new CommentFacade(commentFetcher, commentRenderer);
+
+    document.commentFacade = commentFacade;
 };
