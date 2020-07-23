@@ -8,3 +8,7 @@ const commentsSetup = () => {
 
     document.commentFacade = commentFacade;
 };
+
+const handlePostCommentFormSubmit = () => {
+    
+}
