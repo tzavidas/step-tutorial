@@ -21,28 +21,32 @@ class CommentFetcher {
 
     /**
      * function that makes a POST request add a comment
+     * @async
      * @param name the name of the author of the comment
      * @param description the comment body
      * @returns true if the action was successful, else false
      */
-    postComment(name, description) {
+    async postComment(name, description) {
         const url = this.url;
 
-        fetch(url, {
+        const res = await fetch(url, {
             method: 'POST',
-            data: convertJSONToQueryString({
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: convertJSONToQueryString({
                 name,
                 description
             })
-        })
-        .then(res => res.text())
-        .then(text => {
-            if(text == "Success") {
-                return true;
-            }
+        });
 
-            return false;
-        })
+        const text = await res.text();
+
+        if(text === "Success") {
+            return true;
+        }
+
+        return false;
     }
 }
 

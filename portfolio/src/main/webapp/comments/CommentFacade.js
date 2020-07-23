@@ -14,7 +14,7 @@ class CommentFacade {
      * @param description the comment body
      */
     async postComment(name, description) {
-        const isSuccessful = this.commentFetcher.postComment(name, description);
+        const isSuccessful = await this.commentFetcher.postComment(name, description);
 
         if(isSuccessful) {
             this.refreshComments();

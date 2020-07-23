@@ -9,6 +9,12 @@ const commentsSetup = () => {
     document.commentFacade = commentFacade;
 };
 
-const handlePostCommentFormSubmit = () => {
-    
+const handlePostCommentFormSubmit = (e) => {
+    e = e || window.event;
+    e.preventDefault();
+
+    const name = document.getElementsByName("comment-name")[0].value;
+    const description = document.getElementsByName("comment-description")[0].value;
+
+    document.commentFacade.postComment(name, description);
 }

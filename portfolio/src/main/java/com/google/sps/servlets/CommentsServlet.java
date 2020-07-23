@@ -18,6 +18,8 @@ import com.google.sps.data.CommentListSingleton;
 
 import com.google.sps.dataExceptions.CommentExistingId;
 
+import java.io.PrintStream;
+
 @WebServlet("/comments")
 public final class CommentsServlet extends HttpServlet {
     private CommentListSingleton commentList = CommentListSingleton.getInstance();
@@ -46,6 +48,7 @@ public final class CommentsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List <Comment> allComments = commentList.getAllCommentsAsList();
 
+
         Gson gson = new Gson();
         
         String commentsConverted = gson.toJson(allComments);
@@ -58,6 +61,9 @@ public final class CommentsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String name = request.getParameter("name");
         final String description = request.getParameter("description");
+
+        System.out.println(name);
+        System.out.println(description);
         
         final Date postDate = new Date(); // defaults to the current system's date
 
