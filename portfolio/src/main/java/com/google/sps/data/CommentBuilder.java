@@ -7,7 +7,7 @@ public class CommentBuilder {
         this.implementation = implementation;
     }
 
-    public CommentBuilder setId(int id) {
+    public CommentBuilder setId(long id) {
         this.implementation.setId(id);
 
         return this;
@@ -25,13 +25,13 @@ public class CommentBuilder {
         return this;
     }
 
-    public CommentBuilder setPostDate(Object postDate) {
+    public CommentBuilder setPostDate(long postDate) {
         this.implementation.setPostDate(postDate);
 
         return this;
     }
 
-    private void reset() {
+    public void reset() {
         this.implementation.reset();
     }
 

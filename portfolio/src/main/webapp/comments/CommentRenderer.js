@@ -28,7 +28,7 @@ class CommentRenderer extends RendererInterface {
                         <div class="comment-header">
                             <p class="comment-name">${comment.name}</p>
                             <div class="comment-header-bullet-seperator"></div>
-                            <p class="comment-date">${comment.postDate}</p>
+                            <p class="comment-date">${new Date(comment.postDate)}</p>
                         </div>
                         <div class="comment-body">
                             <p class="comment-desc">${comment.description}</p>

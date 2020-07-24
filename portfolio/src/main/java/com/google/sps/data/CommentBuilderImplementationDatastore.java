@@ -3,9 +3,9 @@ package com.google.sps.data;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.Entity;
 
-java.lang.UnsupportedOperationException;
+import java.lang.UnsupportedOperationException;
 
-public class CommentBuilderImplementationDatastore extends CommentBuilderImplementation {
+public class CommentBuilderImplementationDatastore implements CommentBuilderImplementation {
     private DatastoreService datastoreService;
     private Entity commentEntity;
 
@@ -13,27 +13,33 @@ public class CommentBuilderImplementationDatastore extends CommentBuilderImpleme
         this.reset();
     }
 
-    public void  setId(int id) throws UnsupportedOperationException {
-        throw UnsupportedOperationException;
+    @Override
+    public void setId(long id) throws UnsupportedOperationException {
+        throw new UnsupportedOperationException();
     }
 
+    @Override
     public void setName(String name) {
         this.commentEntity.setProperty("name", name);
     }
 
+    @Override
     public void setDescription(String description) {
         this.commentEntity.setProperty("description", description);
     }
 
-    public CommentBuilder setPostDate(Long timestamp) {
+    @Override
+    public void setPostDate(long timestamp) {
         this.commentEntity.setProperty("postDate", timestamp);
     }
 
-    private void reset() {
+    @Override
+    public void reset() {
         this.commentEntity = new Entity("Comment");
     }
 
-    public Comment build() {
+    @Override
+    public Object build() {
         return this.commentEntity;
     }
 }

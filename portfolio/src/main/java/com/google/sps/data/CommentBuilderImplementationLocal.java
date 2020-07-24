@@ -1,33 +1,40 @@
 package com.google.sps.data;
 
-public class CommentBuilderImplementationLocally extends CommentBuilderImplementation {
+import java.util.Date;
+
+public class CommentBuilderImplementationLocal implements CommentBuilderImplementation {
     private Comment comment;
 
-    public CommentBuilderImplementationLocally() {
+    public CommentBuilderImplementationLocal() {
         this.comment = new Comment();
     }
 
-    public void  setId(int id) {
+    @Override
+    public void  setId(long id) {
         this.comment.setId(id);
     }
 
+    @Override
     public void setName(String name) {
         this.comment.setName(name);
     }
 
+    @Override
     public void setDescription(String description) {
         this.comment.setDescription(description);
     }
 
-    public CommentBuilder setPostDate(Date postDate) {
+    @Override
+    public void setPostDate(long postDate) {
         this.comment.setPostDate(postDate);
     }
 
-    private void reset() {
+    @Override
+    public void reset() {
         this.comment = new Comment();
     }
 
-    public Comment build() {
+    public Object build() {
         Comment builtComment = this.comment;
 
         return builtComment;
