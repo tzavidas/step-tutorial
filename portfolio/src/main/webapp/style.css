@@ -415,6 +415,12 @@ nav > h2
     text-align: center;
 }
 
+/* only for the index.html */
+.comment-section > p
+{
+    text-align: center;
+}
+
 .comment-list
 {
     width: 100%;
