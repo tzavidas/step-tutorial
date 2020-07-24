@@ -65,7 +65,7 @@ public final class CommentsServlet extends HttpServlet {
         }
     }
 
-    public string sanitizeHtml(String input) {
+    public String sanitizeHtml(String input) {
         String smallerThanReplaced = input.replace("<", "&lt;");
         String biggerThanReplaced = smallerThanReplaced.replace(">", "&gt;");
 
