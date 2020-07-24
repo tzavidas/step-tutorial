@@ -50,4 +50,4 @@ public class Comment {
     public long getPostDate() {
         return postDate;
     }
-} 
+}
