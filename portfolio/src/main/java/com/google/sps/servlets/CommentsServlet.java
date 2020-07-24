@@ -29,7 +29,6 @@ public final class CommentsServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         List <Comment> allComments = commentList.getAllCommentsAsList();
 
-
         Gson gson = new Gson();
         
         String commentsConverted = gson.toJson(allComments);
@@ -40,8 +39,8 @@ public final class CommentsServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        final String name = request.getParameter("name");
-        final String description = request.getParameter("description");
+        final String name = this.sanitizeHtml(request.getParameter("name"));
+        final String description = this.sanitizeHtml(request.getParameter("description"));
         
         final Date postDate = new Date(); // defaults to the current system's date
 
@@ -64,6 +63,13 @@ public final class CommentsServlet extends HttpServlet {
         } catch(CommentExistingId e) {
             response.getWriter().write("failure");
         }
+    }
+
+    public string sanitizeHtml(String input) {
+        String smallerThanReplaced = input.replace("<", "&lt;");
+        String biggerThanReplaced = smallerThanReplaced.replace(">", "&gt;");
+
+        return biggerThanReplaced;
     }
 
     private int nextId = 1;
