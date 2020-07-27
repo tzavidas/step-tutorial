@@ -1,9 +1,9 @@
 package com.google.sps.dataExceptions;
 
-public class CommentExistingId extends Exception {
+public class ExistingCommentId extends Exception {
     private int id;
 
-    public CommentExistingId(int id) {
+    public ExistingCommentId(int id) {
         this.id = id;
     }
 

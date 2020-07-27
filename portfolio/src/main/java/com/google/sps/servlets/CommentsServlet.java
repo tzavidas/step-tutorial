@@ -16,7 +16,7 @@ import com.google.sps.data.Comment;
 import com.google.sps.data.CommentBuilder;
 import com.google.sps.data.CommentListSingleton;
 
-import com.google.sps.dataExceptions.CommentExistingId;
+import com.google.sps.dataExceptions.ExistingCommentId;
 
 import java.io.PrintStream;
 
@@ -45,7 +45,7 @@ public final class CommentsServlet extends HttpServlet {
         final Date postDate = new Date(); // defaults to the current system's date
 
         final int idToUse = nextId;
-        nextId++; // increase the id number to be used on the subsequnt requests (similar to AUTO_INCREMENT)
+        nextId++; // increase the id number to be used on the subsequent requests (similar to AUTO_INCREMENT)
 
         response.setContentType("text/plain;");
 
@@ -59,7 +59,7 @@ public final class CommentsServlet extends HttpServlet {
             );
 
             response.getWriter().write("success");
-        } catch(CommentExistingId e) {
+        } catch(ExistingCommentId e) {
             response.getWriter().write("failure");
         }
     }

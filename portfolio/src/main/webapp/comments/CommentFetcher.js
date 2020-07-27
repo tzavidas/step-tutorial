@@ -57,5 +57,5 @@ const convertJSONToQueryString = (obj) => {
         queryString += `${key}=${obj[key]}&`;
     }
 
-    return queryString.slice(0, -1); //remove last character (the redundand &)
+    return queryString.slice(0, -1); //remove last character (the redundant &)
 }

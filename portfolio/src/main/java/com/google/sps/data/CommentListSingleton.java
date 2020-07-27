@@ -5,22 +5,20 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 
-import com.google.sps.dataExceptions.CommentExistingId;
+import com.google.sps.dataExceptions.ExistingCommentId;
 import com.google.sps.dataExceptions.CommentNotFound;
 
 public class CommentListSingleton {
-    private static CommentListSingleton instance;
+    private static class SingletonHolder {
+        private static final CommentListSingleton instance = new CommentListSingleton();
+    }
 
     public static CommentListSingleton getInstance() {
-        if(instance == null) {
-            instance = new CommentListSingleton();
-        }
-
-        return instance;
+        return SingletonHolder.instance;
     }
 
     // maps comment.id to the comment instance for fast look up by id
-    private Map <Integer, Comment> commentContainer;
+    private Map<Integer, Comment> commentContainer;
 
     private CommentListSingleton() {
         this.commentContainer = new HashMap<Integer, Comment>(); // hash table-like implementation (allows insertions, deletions and search by id in O(1))
@@ -36,17 +34,17 @@ public class CommentListSingleton {
         return retrievedComment;
     }
 
-    public List <Comment> getAllCommentsAsList() {
-        List <Comment> commentList = new ArrayList <Comment> (this.commentContainer.values());
+    public List<Comment> getAllCommentsAsList() {
+        List<Comment> commentList = new ArrayList<Comment> (this.commentContainer.values());
 
         return commentList;
     }
 
-    public void addComment(Comment newComment) throws CommentExistingId {
+    public void addComment(Comment newComment) throws ExistingCommentId {
         int id = newComment.getId();
 
         if(this.commentContainer.containsKey(id)) {
-            throw new CommentExistingId(id);
+            throw new ExistingCommentId(id);
         }
 
         this.commentContainer.put(id, newComment); // add comment to our set
