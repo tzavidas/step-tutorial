@@ -42,11 +42,7 @@ class CommentFetcher {
 
         const text = await res.text();
 
-        if(text === 'success') {
-            return true;
-        }
-
-        return false;
+        return text === 'success';
     }
 }
 
@@ -54,7 +50,6 @@ const convertJSONToQueryString = (obj) => {
     if(obj === {} || !obj) { //null or empty
         return '';
     }
-
 
     let queryString = '';
 

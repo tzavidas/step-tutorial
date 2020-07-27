@@ -7,7 +7,7 @@ public class Comment {
 
     }
 
-    public Comment(int id, String name, String description, Date postDate) {
+    private Comment(int id, String name, String description, Date postDate) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -50,4 +50,4 @@ public class Comment {
     public Date getPostDate() {
         return postDate;
     }
-} 
+}

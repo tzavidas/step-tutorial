@@ -47,17 +47,16 @@ public final class CommentsServlet extends HttpServlet {
         final int idToUse = nextId;
         nextId++; // increase the id number to be used on the subsequnt requests (similar to AUTO_INCREMENT)
 
-        Comment newComment = this.commentBuilder
-            .setId(idToUse)
-            .setName(name)
-            .setDescription(description)
-            .setPostDate(postDate)
-            .build();
-
         response.setContentType("text/plain;");
 
         try {
-            this.commentList.addComment(newComment);
+            this.commentList.addComment(this.commentBuilder
+                .setId(idToUse)
+                .setName(name)
+                .setDescription(description)
+                .setPostDate(postDate)
+                .build()
+            );
 
             response.getWriter().write("success");
         } catch(CommentExistingId e) {

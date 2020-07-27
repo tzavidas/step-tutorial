@@ -19,14 +19,15 @@ public class CommentListSingleton {
         return instance;
     }
 
-    private Map <Integer, Comment> commentsContainer;
+    // maps comment.id to the comment instance for fast look up by id
+    private Map <Integer, Comment> commentContainer;
 
     private CommentListSingleton() {
-        this.commentsContainer = new HashMap<Integer, Comment>(); // hash table-like implementation (allows insertions, deletions and search by id in O(1))
+        this.commentContainer = new HashMap<Integer, Comment>(); // hash table-like implementation (allows insertions, deletions and search by id in O(1))
     }
 
     public Comment getCommentById(int id) throws CommentNotFound {
-        Comment retrievedComment = this.commentsContainer.get(id);
+        Comment retrievedComment = this.commentContainer.get(id);
 
         if(retrievedComment == null) {
             throw new CommentNotFound(id);
@@ -36,18 +37,18 @@ public class CommentListSingleton {
     }
 
     public List <Comment> getAllCommentsAsList() {
-        List <Comment> commentsList = new ArrayList <Comment> (this.commentsContainer.values());
+        List <Comment> commentList = new ArrayList <Comment> (this.commentContainer.values());
 
-        return commentsList;
+        return commentList;
     }
 
     public void addComment(Comment newComment) throws CommentExistingId {
         int id = newComment.getId();
 
-        if(this.commentsContainer.containsKey(id)) {
+        if(this.commentContainer.containsKey(id)) {
             throw new CommentExistingId(id);
         }
 
-        this.commentsContainer.put(id, newComment); // add comment to our set
+        this.commentContainer.put(id, newComment); // add comment to our set
     }
 }
