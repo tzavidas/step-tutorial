@@ -15,6 +15,14 @@
         <script src="business-logic/FilterController.js"></script>
         <script src="business-logic/Test.js"></script>
         <!-- End of Business Logic -->
+
+        <!-- Comments Section Logic -->
+        <script src="comments/CommentFetcher.js"></script>
+        <script src="comments/CommentRenderer.js"></script>
+        <script src="comments/CommentFacade.js"></script>
+        <script src="comments/comments-setup.js"></script>
+        <!-- End of Comments Section Logic -->
+
         <script src="business-logic-entry-point.js"></script>
         <script src="script.js"></script>
         <script src="message-fetch.js"></script>
@@ -55,6 +63,11 @@
                 <div class="message-container">
                     <button onclick="fetchMessage()">Request a greeting</button>
                     <p id="message-text">The greeting will appear here!</p>
+                </div>
+            </div>
+            <div class="comment-section">
+                <h2>Comments</h2>
+                <div class="comment-list">
                 </div>
             </div>
         </div>
