@@ -23,7 +23,6 @@ import java.io.PrintStream;
 @WebServlet("/comments")
 public final class CommentsServlet extends HttpServlet {
     private CommentListSingleton commentList = CommentListSingleton.getInstance();
-    private CommentBuilder commentBuilder = new CommentBuilder();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -50,7 +49,7 @@ public final class CommentsServlet extends HttpServlet {
         response.setContentType("text/plain;");
 
         try {
-            this.commentList.addComment(this.commentBuilder
+            this.commentList.addComment(new CommentBuilder()
                 .setId(idToUse)
                 .setName(name)
                 .setDescription(description)
