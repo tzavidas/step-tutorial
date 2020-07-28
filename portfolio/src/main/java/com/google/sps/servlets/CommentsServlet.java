@@ -58,7 +58,6 @@ public final class CommentsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String name = this.sanitizeHtml(request.getParameter("name"));
         final String description = this.sanitizeHtml(request.getParameter("description"));
-
         final Long postDate = System.currentTimeMillis();
 
         try {

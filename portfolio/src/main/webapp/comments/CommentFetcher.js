@@ -42,11 +42,7 @@ class CommentFetcher {
 
         const text = await res.text();
 
-        if(text === 'success') {
-            return true;
-        }
-
-        return false;
+        return text === 'success';
     }
 }
 
@@ -55,12 +51,11 @@ const convertJSONToQueryString = (obj) => {
         return '';
     }
 
-
     let queryString = '';
 
     for(const key in obj) {
         queryString += `${key}=${obj[key]}&`;
     }
 
-    return queryString.slice(0, -1); //remove last character (the redundand &)
+    return queryString.slice(0, -1); //remove last character (the redundant &)
 }
