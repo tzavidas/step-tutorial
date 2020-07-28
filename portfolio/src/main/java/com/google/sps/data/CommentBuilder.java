@@ -1,46 +1,43 @@
 package com.google.sps.data;
 
-import java.util.Date;
-
 public class CommentBuilder {
-    public CommentBuilder() {
-        this.comment = new Comment();
+    private CommentBuilderImplementation implementation;
+
+    public CommentBuilder(CommentBuilderImplementation implementation) {
+        this.implementation = implementation;
     }
 
-    public CommentBuilder setId(int id) {
-        this.comment.setId(id);
+    public CommentBuilder setId(long id) {
+        this.implementation.setId(id);
 
         return this;
     }
 
     public CommentBuilder setName(String name) {
-        this.comment.setName(name);
+        this.implementation.setName(name);
 
         return this;
     }
 
     public CommentBuilder setDescription(String description) {
-        this.comment.setDescription(description);
+        this.implementation.setDescription(description);
 
         return this;
     }
 
-    public CommentBuilder setPostDate(Date postDate) {
-        this.comment.setPostDate(postDate);
+    public CommentBuilder setPostDate(long postDate) {
+        this.implementation.setPostDate(postDate);
 
         return this;
     }
 
-    private void resetProcess() {
-        this.comment = new Comment();
+    public void reset() {
+        this.implementation.reset();
     }
 
-    public Comment build() {
-        Comment builtComment = this.comment;
-        this.resetProcess();
+    public Object build() {
+        Object builtComment = this.implementation.build();
 
         return builtComment;
     }
-
-    private Comment comment;
 }

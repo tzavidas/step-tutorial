@@ -10,26 +10,44 @@ import com.google.gson.Gson;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Date;
 
 import com.google.sps.data.Comment;
+import com.google.sps.data.CommentList;
 import com.google.sps.data.CommentBuilder;
-import com.google.sps.data.CommentListSingleton;
+import com.google.sps.data.CommentBuilderImplementationFactory;
+import com.google.sps.data.DatastoreToLocalCommentConverterDirector;
 
-import com.google.sps.dataExceptions.ExistingCommentId;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.appengine.api.datastore.PreparedQuery;
 
 import java.io.PrintStream;
 
 @WebServlet("/comments")
 public final class CommentsServlet extends HttpServlet {
-    private CommentListSingleton commentList = CommentListSingleton.getInstance();
+    private DatastoreService datastoreService = DatastoreServiceFactory.getDatastoreService();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List <Comment> allComments = commentList.getAllCommentsAsList();
+        Query query = new Query("Comment").addSort("postDate", SortDirection.ASCENDING);
+        PreparedQuery results = this.datastoreService.prepare(query);
+
+        CommentList commentList = new CommentList();
+
+        DatastoreToLocalCommentConverterDirector converterDirector = new DatastoreToLocalCommentConverterDirector();
+
+        for(Entity commentEntity : results.asIterable()) {
+            Comment currComment = converterDirector.convert(commentEntity);
+
+            commentList.addComment(currComment);
+        }
+
+        List<Comment> allComments = commentList.getAllCommentsAsList();
 
         Gson gson = new Gson();
-        
         String commentsConverted = gson.toJson(allComments);
 
         response.setContentType("application/json;");
@@ -40,25 +58,21 @@ public final class CommentsServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String name = this.sanitizeHtml(request.getParameter("name"));
         final String description = this.sanitizeHtml(request.getParameter("description"));
-        
-        final Date postDate = new Date(); // defaults to the current system's date
-
-        final int idToUse = nextId;
-        nextId++; // increase the id number to be used on the subsequent requests (similar to AUTO_INCREMENT)
-
-        response.setContentType("text/plain;");
+        final Long postDate = System.currentTimeMillis();
 
         try {
-            this.commentList.addComment(new CommentBuilder()
-                .setId(idToUse)
+            CommentBuilder datastoreCommentBuilder = new CommentBuilder(CommentBuilderImplementationFactory.getDatastore());
+
+            Entity newCommentEntity = (Entity)datastoreCommentBuilder
                 .setName(name)
                 .setDescription(description)
                 .setPostDate(postDate)
-                .build()
-            );
+                .build();
+
+            this.datastoreService.put(newCommentEntity);
 
             response.getWriter().write("success");
-        } catch(ExistingCommentId e) {
+        } catch(Exception e) {
             response.getWriter().write("failure");
         }
     }
