@@ -3,21 +3,21 @@ package com.google.sps.data;
 import java.util.Date;
 
 public class Comment {
-    public Comment() {
+    private int id;
+    private String name;
+    private String description;
+    private Date postDate;
+
+    Comment() {
 
     }
 
-    public Comment(int id, String name, String description, Date postDate) {
+    Comment(int id, String name, String description, Date postDate) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.postDate = postDate;
     }
-
-    private int id;
-    private String name;
-    private String description;
-    private Date postDate;
 
     public void setId(int id) {
         this.id = id;
@@ -50,4 +50,4 @@ public class Comment {
     public Date getPostDate() {
         return postDate;
     }
-} 
+}

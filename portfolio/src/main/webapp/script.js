@@ -18,7 +18,5 @@
 
 window.onload = () => {
     test();
-
-    commentsSetup();
 }
 
