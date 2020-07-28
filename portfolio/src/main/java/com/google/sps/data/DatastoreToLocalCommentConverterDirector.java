@@ -7,7 +7,7 @@ public class DatastoreToLocalCommentConverterDirector {
         long id = commentEntity.getKey().getId();
         String name = (String)commentEntity.getProperty("name");
         String description = (String)commentEntity.getProperty("description");
-        long postDate = (long) commentEntity.getProperty("postDate");
+        long postDate = (long)commentEntity.getProperty("postDate");
 
         return (Comment)new CommentBuilder(CommentBuilderImplementationFactory.getLocal())
             .setId(id)
