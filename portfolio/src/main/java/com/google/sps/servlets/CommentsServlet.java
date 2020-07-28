@@ -45,7 +45,7 @@ public final class CommentsServlet extends HttpServlet {
             commentList.addComment(currComment);
         }
 
-        ArrayList <Comment> allComments = (ArrayList)commentList.getAllCommentsAsList();
+        List<Comment> allComments = commentList.getAllCommentsAsList();
 
         Gson gson = new Gson();
         String commentsConverted = gson.toJson(allComments);
