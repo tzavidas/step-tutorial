@@ -136,6 +136,8 @@ body
 
 nav
 {
+    display: flex;
+    flex-direction: row;
     height: 40px;
     width: 100%;
     background-color: #1a73e8; /*TODO change with another color, copied from GCP!*/
@@ -154,11 +156,24 @@ nav
 
 nav > h2
 {
-    display: inline;
-    position: relative;
-    top: -4px;
     color: #FFF;
     margin-left: 20px;
+    margin-top: 9px;
+}
+
+.user-status-container
+{
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+.user-status-container > p
+{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .project-container

@@ -1,9 +1,34 @@
 class CommentFacade {
-    constructor(commentFetcher, commentRenderer) {
+    constructor(commentFetcher, commentRenderer, commentFormRenderer) {
         this.commentFetcher = commentFetcher;
         this.commentRenderer = commentRenderer;
+        this.commentFormRenderer = commentFormRenderer;
+
+        this.state = {
+            user: false,
+            comments: []
+        };
 
         this.refreshComments();
+        this.userUpdate(this.state.user);
+    }
+
+    userUpdate(email) {
+        const user = (email != null); // boolean
+
+        Object.assign(this.state, {
+            user
+        });
+
+        this.commentFormRenderer.render(this.state.user);
+    }
+
+    commentsUpdate(comments) {
+        Object.assign(this.state, {
+            comments
+        });
+
+        this.commentRenderer.render(this.state.comments);
     }
 
 
@@ -30,6 +55,6 @@ class CommentFacade {
     async refreshComments() {
         const comments = await this.commentFetcher.getAllComments();
 
-        this.commentRenderer.render(comments);
+        this.commentsUpdate(comments);
     }
 }
