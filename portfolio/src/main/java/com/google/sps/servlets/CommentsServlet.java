@@ -24,6 +24,8 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.PreparedQuery;
 
+import com.google.appengine.api.users.UserServiceFactory;
+
 import java.io.PrintStream;
 
 @WebServlet("/comments")
@@ -61,6 +63,10 @@ public final class CommentsServlet extends HttpServlet {
         final Long postDate = System.currentTimeMillis();
 
         try {
+            if(!this.isAuthenticated()) {
+                throw new Exception();
+            }
+
             CommentBuilder datastoreCommentBuilder = new CommentBuilder(CommentBuilderImplementationFactory.getDatastore());
 
             Entity newCommentEntity = (Entity)datastoreCommentBuilder
@@ -75,6 +81,10 @@ public final class CommentsServlet extends HttpServlet {
         } catch(Exception e) {
             response.getWriter().write("failure");
         }
+    }
+
+    private Boolean isAuthenticated() {
+        return UserServiceFactory.getUserService().isUserLoggedIn();
     }
 
     public String sanitizeHtml(String input) {
