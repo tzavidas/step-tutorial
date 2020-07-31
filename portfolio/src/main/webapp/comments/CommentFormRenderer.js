@@ -5,8 +5,8 @@ class CommentFormRenderer extends RendererInterface {
         this.targetElement = targetElement;
     }
 
-    render(user) {
-        if(user) {
+    render(hasUser) {
+        if(hasUser) {
             this.targetElement.innerHTML = `
                 <h2>New Comment</h2>
                 <form onsubmit="handlePostCommentFormSubmit(event)">

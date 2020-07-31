@@ -18,9 +18,9 @@ public final class AuthenticationServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String uri = request.getRequestURI(); // see below - we'll be removed after the review
+        String uri = request.getRequestURI();
 
-        switch(this.getActionPath(request.getRequestURI())) { // REVIEW: is this acceptable? or shall I use uri above?
+        switch(this.getActionPath(uri)) { // REVIEW: is this acceptable? or shall I use uri above?
             case "login":
                 this.doLogin(request, response);
                 break;
@@ -80,12 +80,12 @@ public final class AuthenticationServlet extends HttpServlet {
     private String getActionPath(String uri) {
         uri = uri.substring(1); // discard the leftmost slash
 
-        String []splittedBySlashes = uri.split("/");
+        String []splitBySlashes = uri.split("/");
 
-        if(splittedBySlashes.length >= 3 || splittedBySlashes.length <= 1) { // not acceptable number of overall slashes
+        if(splitBySlashes.length >= 3 || splitBySlashes.length <= 1) { // unacceptable number of overall slashes
             return "";
         }
 
-        return splittedBySlashes[1];
+        return splitBySlashes[1];
     }
 }

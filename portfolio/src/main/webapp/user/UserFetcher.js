@@ -4,20 +4,18 @@ class UserFetcher {
     }
 
     /**
-     * @returns if logged in user's email, otherwise false
+     * @returns if logged in user's email, empty string otherwise
      */
     async getUserEmail() {
         const url = '/user/data';
 
         const res = await fetch(url);
-        const data = await res.text();
+        const email = await res.text();
 
-        if(data === 'false') {
-            return null;
+        if(email === 'false') {
+            return '';
         } else {
-            return data;
+            return email;
         }
-
-        return email;
     }
 }

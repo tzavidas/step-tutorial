@@ -13,10 +13,10 @@ class UserContainerRenderer extends RendererInterface {
     }
 
     /**
-     * @param {String} email the email of the users, null if not logged in
+     * @param {String} email the email of the user, empty string if not logged in
      */
     render(email) {
-        if(!email) { 
+        if(email === '') { 
             this.targetElement.innerHTML = `
                 <p>You can login <a href='/user/login'>here</a>!</p>
             `;

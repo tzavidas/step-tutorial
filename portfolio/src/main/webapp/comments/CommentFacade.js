@@ -14,10 +14,10 @@ class CommentFacade {
     }
 
     userUpdate(email) {
-        const user = (email != null); // boolean
+        const hasUser = (email !== ''); // boolean
 
         Object.assign(this.state, {
-            user
+            user: hasUser
         });
 
         this.commentFormRenderer.render(this.state.user);
