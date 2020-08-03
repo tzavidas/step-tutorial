@@ -20,7 +20,7 @@ public final class AuthenticationServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String uri = request.getRequestURI();
 
-        switch(this.getActionPath(uri)) { // REVIEW: is this acceptable? or shall I use uri above?
+        switch(this.extractActionFromUri(uri)) {
             case "login":
                 this.doLogin(request, response);
                 break;
@@ -73,16 +73,15 @@ public final class AuthenticationServlet extends HttpServlet {
     }
 
     /**
-     * Extracts the type of action needed to be taken based on the URI.
-     * @param uri the page's uri in the form /user/[action]
      * @return [action] if it does not contain any slashes, otherwise an empty string
      */
-    private String getActionPath(String uri) {
+    private String extractActionFromUri(String uri) {
         uri = uri.substring(1); // discard the leftmost slash
 
         String []splitBySlashes = uri.split("/");
 
-        if(splitBySlashes.length >= 3 || splitBySlashes.length <= 1) { // unacceptable number of overall slashes
+        if(splitBySlashes.length >= 3 // too many slashes are presented on the uri (ie. "user/lorem/ipsum")
+        || splitBySlashes.length <= 1) { // no action string provided (ie. "user")
             return "";
         }
 
