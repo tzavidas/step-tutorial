@@ -19,9 +19,13 @@ const handlePostCommentFormSubmit = (e) => {
 
     const name = document.getElementsByName('comment-name')[0].value;
     const description = document.getElementsByName('comment-description')[0].value;
+    const images = document.getElementsByName('comment-images')[0].files;
 
-    document.getElementsByName('comment-name')[0].value = ''; // clear
-    document.getElementsByName('comment-description')[0].value = ''; // clear
+    const cleanup = () => {
+        document.getElementsByName('comment-name')[0].value = ''; // clear
+        document.getElementsByName('comment-description')[0].value = '';
+        document.getElementsByName('comment-images')[0].value = '';
+    }
 
-    document.commentFacade.postComment(name, description);
+    document.commentFacade.postComment(name, description, images, cleanup);
 }

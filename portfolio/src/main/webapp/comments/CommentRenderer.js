@@ -62,6 +62,15 @@ class CommentRenderer extends RendererInterface {
                         <div class="comment-body">
                             <p class="comment-desc">${comment.description}</p>
                         </div>
+                        ${comment.images.length > 0 ? `
+                            <div class="comment-image-list">
+                                ${ comment.images
+                                .map((imageUrl) => (`<img src=${imageUrl} />`))
+                                .reduce(( acc, curr) => ( acc + curr ) )
+                                }
+                            </div>
+                        ` : '' /* is it possible to avoid this? In react.js you can do comment.images.length > 0 && ... (here this does not work) */} 
+                        </div>
                     </div>
                 `;
 

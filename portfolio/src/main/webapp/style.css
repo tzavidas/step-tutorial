@@ -484,6 +484,19 @@ nav > h2
     margin: 0;
 }
 
+.comment-image-list
+{
+    display: flex;
+    flex-direction: row;
+    overflow-y: scroll;
+}
+
+.comment-image-list > img
+{
+    height: 100px;
+    margin-right: 5px;
+}
+
 .comment-post-form-container
 {
     max-width: 600px;
@@ -528,6 +541,21 @@ nav > h2
 {
     width: 65%;
     height: 200px;
+}
+
+.comment-file-upload-section
+{
+    margin-top: 10px;
+}
+
+.comment-file-upload-section > label
+{
+    display: block;
+}
+
+.comment-file-upload-section > input
+{
+    margin-top: 5px;
 }
 
 .comment-post-form-submit-button
