@@ -21,4 +21,3 @@ public final class BlobstoreServlet extends HttpServlet {
         response.getWriter().write(blobUrl);
     }
 }
-

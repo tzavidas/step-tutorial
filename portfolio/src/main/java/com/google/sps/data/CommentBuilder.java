@@ -1,5 +1,7 @@
 package com.google.sps.data;
 
+import java.util.List;
+
 public class CommentBuilder {
     private CommentBuilderImplementation implementation;
 
@@ -27,6 +29,12 @@ public class CommentBuilder {
 
     public CommentBuilder setPostDate(long postDate) {
         this.implementation.setPostDate(postDate);
+
+        return this;
+    }
+
+    public CommentBuilder setImages(List<String> images) {
+        this.implementation.setImages(images);
 
         return this;
     }
