@@ -9,8 +9,8 @@ import java.io.IOException;
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 
-@WebServlet("/blob-store-2")
-final class BlobstoreServlet extends HttpServlet {
+@WebServlet("/blobstore")
+public final class BlobstoreServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String commentPostUri = "/comments";
