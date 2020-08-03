@@ -18,6 +18,10 @@ class CommentFormRenderer extends RendererInterface {
                         <label for="comment-description">Text:</label>
                         <textarea name="comment-description" required /></textarea>
                     </div>
+                    <div class="comment-file-upload-section">
+                        <label for="comment-images">Upload Images:</label>
+                        <input name="comment-images" type="file" multiple />
+                    </div>
                     <button class="comment-post-form-submit-button">Submit</button>
                 </form>
             `;

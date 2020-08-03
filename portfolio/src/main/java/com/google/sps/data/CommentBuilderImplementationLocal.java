@@ -1,6 +1,7 @@
 package com.google.sps.data;
 
 import java.util.Date;
+import java.util.List;
 
 public class CommentBuilderImplementationLocal implements CommentBuilderImplementation {
     private Comment comment;
@@ -10,7 +11,7 @@ public class CommentBuilderImplementationLocal implements CommentBuilderImplemen
     }
 
     @Override
-    public void  setId(long id) {
+    public void setId(long id) {
         this.comment.setId(id);
     }
 
@@ -27,6 +28,11 @@ public class CommentBuilderImplementationLocal implements CommentBuilderImplemen
     @Override
     public void setPostDate(long postDate) {
         this.comment.setPostDate(postDate);
+    }
+
+    @Override
+    public void setImages(List<String> images) {
+        this.comment.setImages(images);
     }
 
     @Override

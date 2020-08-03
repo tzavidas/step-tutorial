@@ -37,9 +37,12 @@ class CommentFacade {
      * @async
      * @param name the name of the author of the comment
      * @param description the comment body
+     * @param images array of the image files associated with the comment
      */
-    async postComment(name, description) {
-        const isSuccessful = await this.commentFetcher.postComment(name, description);
+    async postComment(name, description, images, callbackAfter) {
+        const isSuccessful = await this.commentFetcher.postComment(name, description, images);
+
+        callbackAfter();
 
         if(isSuccessful) {
             this.refreshComments();

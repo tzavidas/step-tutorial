@@ -16,6 +16,7 @@ import com.google.sps.data.CommentList;
 import com.google.sps.data.CommentBuilder;
 import com.google.sps.data.CommentBuilderImplementationFactory;
 import com.google.sps.data.DatastoreToLocalCommentConverterDirector;
+import com.google.sps.data.BlobRequestParser;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -25,6 +26,18 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 import com.google.appengine.api.datastore.PreparedQuery;
 
 import com.google.appengine.api.users.UserServiceFactory;
+
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobInfo;
+import com.google.appengine.api.blobstore.BlobInfoFactory;
+
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.google.appengine.api.images.ServingUrlOptions;
+
+import java.net.URL;
+import java.net.MalformedURLException;
 
 import java.io.PrintStream;
 
@@ -58,13 +71,22 @@ public final class CommentsServlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        final String name = this.sanitizeHtml(request.getParameter("name"));
-        final String description = this.sanitizeHtml(request.getParameter("description"));
+        BlobRequestParser requestParser = new BlobRequestParser(request);
+
+        final String name = this.sanitizeHtml(requestParser.getTextParameter("name"));
+        final String description = this.sanitizeHtml(requestParser.getTextParameter("description"));
         final Long postDate = System.currentTimeMillis();
+        final List<BlobKey> imageFiles = requestParser.getFileListByParameter("images");
 
         try {
             if(!this.isAuthenticated()) {
                 throw new Exception();
+            }
+            
+            List<String> imageUrls = new ArrayList<>();
+
+            for(BlobKey imageBlobKey : imageFiles) {
+                imageUrls.add(this.getUploadedUrl(imageBlobKey));
             }
 
             CommentBuilder datastoreCommentBuilder = new CommentBuilder(CommentBuilderImplementationFactory.getDatastore());
@@ -73,6 +95,7 @@ public final class CommentsServlet extends HttpServlet {
                 .setName(name)
                 .setDescription(description)
                 .setPostDate(postDate)
+                .setImages(imageUrls)
                 .build();
 
             this.datastoreService.put(newCommentEntity);
@@ -80,6 +103,28 @@ public final class CommentsServlet extends HttpServlet {
             response.getWriter().write("success");
         } catch(Exception e) {
             response.getWriter().write("failure");
+        }
+    }
+
+    private String getUploadedUrl(BlobKey blobKey) {
+        BlobInfo blobInfo = new BlobInfoFactory().loadBlobInfo(blobKey);
+
+        if(blobInfo.getSize() == 0) { // no file was uploaded
+            BlobstoreServiceFactory.getBlobstoreService().delete(blobKey);
+
+            return null;
+        }
+
+        ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(blobKey);
+        ImagesService imagesService = ImagesServiceFactory.getImagesService();
+
+        try {
+            String imageUrl = imagesService.getServingUrl(options);
+
+            URL url = new URL(imageUrl);
+            return url.getPath();
+        } catch(MalformedURLException e) {
+            return imagesService.getServingUrl(options);
         }
     }
 

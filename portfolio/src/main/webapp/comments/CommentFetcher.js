@@ -19,25 +19,38 @@ class CommentFetcher {
         return comments;
     }
 
+    async getBlobUploadUrl() {
+        const url = '/blobstore';
+
+        const res = await fetch(url);
+        const blobstoreUploadUrl = await res.text();
+
+        return blobstoreUploadUrl;
+    }
+
     /**
      * function that makes a POST request add a comment
      * @async
      * @param name the name of the author of the comment
      * @param description the comment body
-     * @returns true if the action was successful, else false
+     * @param images array of the image files associated with the comment
+     * @returns {boolean} wheter the action was successful
      */
-    async postComment(name, description) {
-        const url = this.url;
+    async postComment(name, description, images) {
+        const url = await this.getBlobUploadUrl();
+
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('description', description);
+
+        for(const image of images) {
+            formData.append('images', image);
+        }
+        
 
         const res = await fetch(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: convertJSONToQueryString({
-                name,
-                description
-            })
+            body: formData
         });
 
         const text = await res.text();

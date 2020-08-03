@@ -2,6 +2,9 @@ package com.google.sps.data;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.Entity;
+import com.google.gson.Gson;
+
+import java.util.List;
 
 import java.lang.UnsupportedOperationException;
 
@@ -31,6 +34,11 @@ public class CommentBuilderImplementationDatastore implements CommentBuilderImpl
     @Override
     public void setPostDate(long timestamp) {
         this.commentEntity.setProperty("postDate", timestamp);
+    }
+
+    @Override
+    public void setImages(List<String> images) {
+        this.commentEntity.setProperty("images", new Gson().toJson(images));
     }
 
     @Override
