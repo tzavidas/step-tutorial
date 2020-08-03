@@ -10,33 +10,32 @@
         <!-- Comments Section Logic -->
         <script src="comments/CommentFetcher.js"></script>
         <script src="comments/CommentRenderer.js"></script>
+        <script src="comments/CommentFormRenderer.js"></script>
         <script src="comments/CommentFacade.js"></script>
         <script src="comments/comments-setup.js"></script>
         <!-- End of Comments Section Logic -->
+
+        <!-- User Logic -->
+        <script src="user/UserFetcher.js"></script>
+        <script src="user/UserContainerRenderer.js"></script>
+        <script src="user/UserContainerFacade.js"></script>
+        <script src="user/user-setup.js"></script>
+        <!-- End of User Logic -->
+
         <script src="comments-script.js"></script>
     </head>
     <body>
         <div class="main">
             <nav>
                 <h2 onclick="window.location.replace('/');">My Portfolio</h2>
+                <div class="user-status-container">
+                </div>
             </nav>
             <div class="comment-section">
                 <h2>Comments</h2>
                 <div class="comment-list">
                 </div>
                 <div class="comment-post-form-container">
-                    <h2>New Comment</h2>
-                    <form onsubmit="handlePostCommentFormSubmit(event)">
-                        <div class="comment-name-group">
-                            <label for="comment-name">Name:</label>
-                            <input name="comment-name" required />
-                        </div>
-                        <div class="comment-description-group">
-                            <label for="comment-description">Text:</label>
-                            <textarea name="comment-description" required /></textarea>
-                        </div>
-                        <button class="comment-post-form-submit-button">Submit</button>
-                    </form>
                 </div>
             </div>
         </div>

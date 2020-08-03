@@ -18,5 +18,7 @@
 
 window.onload = () => {
     test();
-}
 
+    userSetup();
+    document.userContainerFacade.fetchUserStatus();
+}
